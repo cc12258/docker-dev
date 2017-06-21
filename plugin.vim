@@ -33,7 +33,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " Async linter!
-Plug 'neomake/neomake'
+Plug 'w0rp/ale'
 
 " Minimalist mode.
 Plug 'junegunn/goyo.vim'
@@ -47,3 +47,5 @@ Plug 'AGhost-7/github-complete.vim', { 'branch': 'feature-force-emoji', 'for': '
 " Better repl integration (sends selections to repl).
 Plug 'jpalardy/vim-slime'
 
+" Dropdown interface framework
+Plug 'Shougo/denite.nvim'
