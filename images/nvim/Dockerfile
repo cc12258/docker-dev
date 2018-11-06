@@ -1,8 +1,8 @@
 ARG BASE_TAG=latest
 
-FROM aghost7/power-tmux:$BASE_TAG
+FROM cc121/power-tmux:$BASE_TAG
 
-USER aghost-7
+USER dev
 
 COPY ./build.sh /tmp/build.sh
 

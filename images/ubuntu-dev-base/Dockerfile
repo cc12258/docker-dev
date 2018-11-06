@@ -1,4 +1,4 @@
-ARG UBUNTU_RELEASE=xenial
+ARG UBUNTU_RELEASE=bionic
 
 FROM ubuntu:${UBUNTU_RELEASE}
 
@@ -9,8 +9,8 @@ ENV UBUNTU_RELEASE=${UBUNTU_RELEASE}
 # TODO: user name should be customisable?
 RUN apt-get update && \
 	apt-get install sudo -y && \
-	adduser --disabled-password --gecos '' aghost-7 && \
-	adduser aghost-7 sudo && \
+	adduser --disabled-password --gecos '' dev && \
+	adduser dev sudo && \
 	echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers && \
 	apt-get autoremove -y && \
 	apt-get clean && \
@@ -28,13 +28,13 @@ RUN bash /tmp/build.sh && \
 	rm /tmp/build.sh
 
 # For some reason, this environment variable isn't set by docker.
-ENV USER aghost-7
+ENV USER dev
 
-ENV HOME /home/aghost-7
+ENV HOME /home/dev
 
-WORKDIR /home/aghost-7
+WORKDIR /home/dev
 
-USER aghost-7
+USER dev
 
 COPY ./inputrc "$HOME/.inputrc"
 

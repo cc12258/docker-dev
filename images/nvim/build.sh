@@ -13,7 +13,7 @@ apt-install () {
 apt-install software-properties-common -y
 
 # Fix the permissions from the copy...
-sudo chown -R aghost-7:aghost-7 "$HOME/.config/nvim"
+sudo chown -R dev:dev "$HOME/.config/nvim"
 
 # Install neovim
 sudo add-apt-repository ppa:neovim-ppa/unstable

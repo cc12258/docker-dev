@@ -23,7 +23,7 @@ sudo apt-get install -y ruby ruby-dev
 # Install stuff that rvm will install itself if not already present...
 sudo apt-get install -y gawk zlib1g-dev libyaml-dev libsqlite3-dev sqlite3 \
 	autoconf libgmp-dev libgdbm-dev automake libtool bison pkg-config libffi-dev \
-	libgmp-dev libreadline6-dev libssl-dev
+	libgmp-dev libreadline6-dev libssl-dev libmysqlclient-dev
 
 # Install pry (improved repl) globally
 sudo gem install pry

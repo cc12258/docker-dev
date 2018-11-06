@@ -1,8 +1,8 @@
 ARG BASE_TAG=latest
 
-FROM aghost7/ubuntu-dev-base:$BASE_TAG
+FROM cc121/ubuntu-dev-base:$BASE_TAG
 
-USER aghost-7
+USER dev
 
 ENV XDG_CONFIG_HOME "$HOME/.config"
 
