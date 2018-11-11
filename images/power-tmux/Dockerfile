@@ -1,6 +1,4 @@
-ARG BASE_TAG=latest
-
-FROM cc121/ubuntu-dev-base:$BASE_TAG
+FROM cc121/dev:ubuntu-dev-base
 
 USER dev
 

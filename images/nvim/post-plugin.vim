@@ -41,17 +41,6 @@ let g:NERDTreeMouseMode = 3
 " Use spaces instead just for yaml
 autocmd Filetype yaml setl expandtab
 
-" Highlighting on top of the error gutter is a bit overkill...
-let g:ale_set_highlights = 0
-
-" I want errors to be styled a bit more like neomake
-let g:ale_sign_error = '✖'
-highlight ALEErrorSign ctermfg=DarkRed ctermbg=NONE
-
-" Same with warnings
-let g:ale_sign_warning = '⚠'
-highlight ALEWarningSign ctermfg=Yellow ctermbg=NONE
-
 " Force the emoji to show up in the completion dropdown
 let g:github_complete_emoji_force_available = 1
 

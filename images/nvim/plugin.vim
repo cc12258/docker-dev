@@ -32,9 +32,6 @@ Plug 'vim-airline/vim-airline'
 " Download powerline theme for the statusbar.
 Plug 'vim-airline/vim-airline-themes'
 
-" Async linter!
-Plug 'w0rp/ale'
-
 " Minimalist mode.
 Plug 'junegunn/goyo.vim'
 

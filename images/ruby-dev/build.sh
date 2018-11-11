@@ -34,6 +34,12 @@ sudo gem install solargraph
 # proper debugger
 sudo gem install byebug
 
+# install mysql2
+sudo gem install mysql2
+
+# install bundler
+sudo gem install bundler
+
 # Plugins
 cat /tmp/plugin.vim >> ~/.config/nvim/plugin.vim
 cat /tmp/post-plugin.vim >> ~/.config/nvim/post-plugin.vim

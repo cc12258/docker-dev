@@ -1,6 +1,4 @@
-ARG BASE_TAG=latest
-
-FROM cc121/power-tmux:$BASE_TAG
+FROM cc121/dev:power-tmux
 
 USER dev
 
