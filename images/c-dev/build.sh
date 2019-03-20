@@ -4,6 +4,7 @@ set -ex
 
 sudo apt-get update
 sudo apt-get install -y cmake
+sudo apt-get install -y --no-install-recommends valgrind
 
 # Download latest clang and build cquery completion engine.
 git clone https://github.com/cquery-project/cquery.git --recursive /tmp/cquery
@@ -14,8 +15,6 @@ cd build
 cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local -DCMAKE_EXPORT_COMPILE_COMMANDS=YES
 cmake --build .
 sudo cmake --build . --target install
-# We'll probably want this later.
-sudo cp bin/clang /usr/local/bin
 cd /
 
 # Add plugins and customizations.

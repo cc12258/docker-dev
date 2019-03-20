@@ -1,13 +1,9 @@
-#!/usr/bin/env bash
 
-set -e
+image="aghost7/ubuntu-dev-base:$1"
 
-set -x
+for cmd in docker netstat dig socat tree tcpflow ssh; do
+	docker run --rm "$image" which "$cmd"
+done
 
-docker run --rm aghost7/ubuntu-dev-base:latest tldr man
-
-docker run -t --rm aghost7/ubuntu-dev-base:latest which ag
-
-docker run --rm aghost7/ubuntu-dev-base:latest which docker
-
-docker run --rm aghost7/ubuntu-dev-base:bionic bash -c 'PAGER=cat man python' > /dev/null
+docker run --rm "$image" tldr man
+docker run --rm "$image" bash -c 'PAGER=cat man python' > /dev/null

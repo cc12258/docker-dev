@@ -14,13 +14,24 @@ RUN apt-get update && \
 	echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers && \
 	apt-get autoremove -y && \
 	apt-get clean && \
-	rm -rf /var/lib/apt/lists
+	rm -rf /var/lib/apt/lists/*
+
+# {{{ lang stuff
+
+ENV LC_ALL=en_US.UTF-8
+ENV LANG=en_US.UTF-8
+ENV LANGUAGE=en_US.UTF-8
+RUN apt-get update && \
+	apt-get install -y language-pack-en-base && \
+	rm -rf /var/lib/apt/lists/*
+
+# }}}
 
 # Required for `clear` command to work, etc.
 ENV TERM screen-256color
 
-ENV DOCKER_CLI_SHA256 "7ceb584cedba158b335fa2df11556cd70c6c528c7c93ceb3bf9aa13903e824cd"
-ENV DOCKER_CLI_VERSION "18.06.0"
+ENV DOCKER_CLI_SHA256 "918372dd8cc56616b32b0f67432e2f6b4b27541728d6f9529543a5d73d955100"
+ENV DOCKER_CLI_VERSION "18.09.3"
 
 COPY build.sh /tmp/build.sh
 

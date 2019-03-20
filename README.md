@@ -1,6 +1,8 @@
 # Docker Dev
 Spin up a container to develop from anywhere!
 
+![docker-dev](https://raw.githubusercontent.com/AGhost-7/docker-dev/assets/demo.gif)
+
 To run, just:
 ```
 docker run -ti aghost7/nodejs-dev:boron tmux new
@@ -13,6 +15,8 @@ slipway start aghost7/nodejs-dev:carbon
 ```
 
 ## Images
+
+### Language Images
 - `ubuntu-dev-base`: Ubuntu image with a few presets such as docker of
 already installed. Might add docker-compose in there eventually. Not decided.
 Main thing with this image though is that it downgrades from root to a regular
@@ -29,9 +33,6 @@ setup (no language-specific plugins in there). Images available:
 	- `latest`
 	- `bionic`
 - `nodejs-dev`: nvm + nodejs specific configurations. Tags available:
-	- `boron`
-	- `argon`
-	- `carbon`
 	- `bionic-carbon`: Ubuntu 18.04 + NodeJs 8.
 	- `bionic-dubnium`: Ubuntu 18.04 + NodeJs 10.
 - `rust-dev`: NeoVim configuration and autocomplete for the Rust language. 
@@ -43,14 +44,24 @@ setup (no language-specific plugins in there). Images available:
 - `ruby-dev`: Ubuntu Xenial image with rvm and ruby 2.3 pre-installed.
 - `c-dev`: Ubuntu Bionic image for c development with cquery for completions.
 There is only a `bionic` tag.
+
+### Database Images
 - `pg-dev`: Postgresql image with pgcli, a command line client with
 autocompletions and syntax highlighting. Tags correspond to the Postgresql
 version:
 	- `9.3`
 	- `9.6`
 	- `10`
-- `my-dev`: MySql image with mycli utility. There is only a `5.6` image.
+- `my-dev`: MySql image with mycli utility. Tags correspond to the mysql
+version:
+	- `5.6`
+	- `5.7`
+	- `8.0`
+- `mongo-dev`: Official mongodb image with [Mongo Hacker][mongo_hacker] added.
+Tags correspond to the mongdb version:
+	- `4.1`
 
+[mongo_hacker]: https://github.com/TylerBrock/mongo-hacker
 
 ## Vim Configuration
 Vim configurations are broken down into three parts:

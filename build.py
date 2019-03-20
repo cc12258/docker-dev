@@ -28,20 +28,19 @@ images = [
         {'name': 'rust-dev', 'tag': 'nightly', 'path': 'rust-dev/nightly'},
         {'name': 'scala-dev'},
         {'name': 'my-dev', 'tag': '5.6'},
+        {'name': 'my-dev', 'tag': '5.7', 'args': {'MYSQL_VERSION': '5.7'}},
+        {'name': 'my-dev', 'tag': '8.0', 'args': {'MYSQL_VERSION': '8.0'}},
         {'name': 'pg-dev', 'tag': '9.3'},
         {'name': 'pg-dev', 'tag': '9.6', 'args': {'PG_VERSION': '9.6'}},
         {'name': 'pg-dev', 'tag': '10', 'args': {'PG_VERSION': '10'}},
-        {'name': 'nodejs-dev-base', 'path': 'nodejs-dev/base'},
         {'name': 'nodejs-dev-base', 'path': 'nodejs-dev/base', 'tag': 'bionic',
             'args': {'BASE_TAG': 'bionic'}},
-        {'name': 'nodejs-dev', 'tag': 'boron', 'path': 'nodejs-dev/boron'},
-        {'name': 'nodejs-dev', 'tag': 'carbon', 'path': 'nodejs-dev/carbon'},
         {'name': 'nodejs-dev', 'tag': 'bionic-carbon',
             'path': 'nodejs-dev/carbon', 'args': {'BASE_TAG': 'bionic'}},
         {'name': 'nodejs-dev', 'tag': 'bionic-dubnium',
             'path': 'nodejs-dev/dubnium', 'args': {'BASE_TAG': 'bionic'}},
-        {'name': 'c-dev', 'tag': 'bionic'}
-
+        {'name': 'c-dev', 'tag': 'bionic'},
+        {'name': 'mongo-dev', 'tag': '4.1', 'args': {'BASE_TAG': '4.1'}}
         ]
 
 
@@ -98,11 +97,16 @@ def list_extensions(base_dir, extension):
                 yield abs_path
 
 
-def run_sh_tests(sh_dir):
+def run_sh_tests(sh_dir, tag):
     for file in list_extensions(sh_dir, '.sh'):
-        code = call(['bash', '-e', '-x', file])
+        code = call(['bash', '-e', '-x', file, tag])
         if code > 0:
             raise SystemExit(code)
+
+
+def vader_test_volume(file):
+    basedir = path.dirname(__file__)
+    return path.join(basedir, path.dirname(file)) + ':/home/aghost-7/test'
 
 
 def run_vader_tests(image, vader_dir):
@@ -113,8 +117,8 @@ def run_vader_tests(image, vader_dir):
             '--rm',
             '-t',
             '-v',
-            path.dirname(file) + ':/home/aghost-7/test',
-            image['name'] + image['tag'],
+            vader_test_volume(file),
+            image['full_name'],
             'nvim -c "Vader! ~/test/{}"'.format(path.basename(file))
             ])
         if code > 0:
@@ -126,7 +130,7 @@ def run_tests(image):
     if path.isdir(test_dir):
         sh_dir = path.join(test_dir, 'sh')
         if path.isdir(sh_dir):
-            run_sh_tests(sh_dir)
+            run_sh_tests(sh_dir, image['tag'])
 
         vader_dir = path.join(test_dir, 'vader')
         if path.isdir(vader_dir):

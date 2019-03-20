@@ -38,7 +38,7 @@ apt-install xclip
 # Download only the docker client as the host already has the daemon.
 apt-get update
 apt-get install -y debsums
-curl -o /tmp/docker.tgz "https://download.docker.com/linux/static/stable/x86_64/docker-$DOCKER_CLI_VERSION-ce.tgz"
+curl -o /tmp/docker.tgz "https://download.docker.com/linux/static/stable/x86_64/docker-$DOCKER_CLI_VERSION.tgz"
 tar xvf /tmp/docker.tgz -C /tmp
 mv /tmp/docker/docker /usr/local/bin/docker
 rm -rf /tmp/docker*
@@ -69,8 +69,11 @@ apt-install dnsutils
 # Needed for netstat, etc.
 apt-install net-tools
 
+# cheap reverse proxy
+apt-install socat
+
 # Packet sniffer for debugging.
-apt-install tcpflow
+apt-install tcpflow tcpdump
 
 # Very usefull for finding issues coming from syscalls
 apt-install strace
@@ -109,6 +112,11 @@ sudo apt-add-repository ppa:git-core/ppa
 sudo apt-get update
 apt-install git
 sudo apt-get purge -y software-properties-common
+
+# subcommand which opens the branch you're checked out on github.
+git clone --depth 1 https://github.com/paulirish/git-open /tmp/git-open
+sudo cp /tmp/git-open/git-open /usr/local/bin
+rm -rf /tmp/git-open
 
 # Required for so many languages this will simply be included by default.
 apt-install build-essential pkgconf
