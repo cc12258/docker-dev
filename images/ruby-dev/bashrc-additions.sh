@@ -9,3 +9,7 @@ envbind() {
 }
 
 envbind -r
+
+alias gst="git status"
+alias gcm="git commit -m "
+alias gp="git push"

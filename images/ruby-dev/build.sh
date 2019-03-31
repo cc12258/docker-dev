@@ -7,7 +7,7 @@ sudo apt-get update
 sudo apt-get install -y --no-install-recommends software-properties-common
 sudo apt-add-repository -y ppa:rael-gc/rvm
 sudo apt-get update
-sudo apt-get install -y rvm
+sudo apt-get install -y rvm wget
 sudo apt-get remove -y software-properties-common
 
 # Make rvm completions available
