@@ -25,11 +25,13 @@ curl https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${T
     echo "${TERRAFORM_SHA256SUM}  terraform_${TERRAFORM_VERSION}_linux_amd64.zip" > terraform_${TERRAFORM_VERSION}_SHA256SUMS && \
     sudo sha256sum -c --strict terraform_${TERRAFORM_VERSION}_SHA256SUMS && \
     sudo unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip -d /bin && \
-    sudo rm -f terraform_${TERRAFORM_VERSION}_linux_amd64.zip
+    sudo rm -f terraform_${TERRAFORM_VERSION}_linux_amd64.zip \
+    sudo rm -Rf terraform_0.11.13_SHA256SUMS
 
 # Install chef development kit
 wget https://packages.chef.io/files/stable/chefdk/3.2.30/ubuntu/18.04/chefdk_3.2.30-1_amd64.deb
-dpkg -i chefdk_3.2.30-1_amd64.deb
+sudo dpkg -i chefdk_3.2.30-1_amd64.deb
+sudo rm -Rf chefdk_3.2.30-1_amd64.deb
 
 # base ruby distribution
 sudo apt-get install -y ruby ruby-dev
