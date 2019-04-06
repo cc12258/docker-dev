@@ -31,10 +31,15 @@ curl https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${T
 # Install chef development kit
 wget https://packages.chef.io/files/stable/chefdk/3.2.30/ubuntu/18.04/chefdk_3.2.30-1_amd64.deb
 sudo dpkg -i chefdk_3.2.30-1_amd64.deb
-sudo rm -Rf chefdk_3.2.30-1_amd64.deb
+sudo rm -Rf ~/chefdk_*.deb
 
 # base ruby distribution
 sudo apt-get install -y ruby ruby-dev
+
+wget https://storage.googleapis.com/kubernetes-helm/helm-v2.13.1-linux-amd64.tar.gz
+sudo tar xfz helm-v2.13.1-linux-amd64.tar.gz
+sudo mv linux-amd64/helm /usr/local/bin/helm
+sudo rm -Rf linux-amd64 helm*.tar.gz
 
 # Install stuff that rvm will install itself if not already present...
 sudo apt-get install -y gawk zlib1g-dev libyaml-dev libsqlite3-dev sqlite3 \
